@@ -5,21 +5,44 @@
 #include "importance_map.h"
 
 int main() {
-
+    /* Define info needed for writing a PPM image. Will later be moved when
+     * support for other formats is added. */
     char * name = "test.ppm";
     char * com = "# ";
 
-    unsigned int x_resolution = 2560;
-    unsigned int y_resolution = 2560;
-    y_resolution += (y_resolution % 2 == 0);
-    const unsigned int escape_limit = 512;
+    unsigned int x_resolution = 1920;
+    unsigned int y_resolution = 1920;
+    //y_resolution += (y_resolution % 2 == 0);
+    unsigned int escape_limit = 512;
 
+
+    /* Define an output array. Needs to be dynamically allocated due to stack
+     * memory size constraints. */
     unsigned int * data;
     data = (unsigned int *) malloc(sizeof(unsigned int) * x_resolution * y_resolution);
 
-    //freq_map(x_resolution, y_resolution, escape_limit, data);
-    importance_map(x_resolution, y_resolution, escape_limit, data);
+
+    /* Calculate various forms of fractals. Outputs to inputted Data.
+     *       freq_map    -    Also known as the Buddhabrot or Nebulabrot
+     *                        fractal. These specific names only apply to the
+     *                        frequency map of the Mandelbrot Set. This
+     *                        currently only calculates the map for this case.
+     *
+     * importance_map    -    Calculates the map of coordinates that have
+     *                        meaningful effect for a limited rendered region
+     *                        of the frequency map. This will later be used
+     *                        to allow for fast approximation of the frequency
+     *                        map.
+     */
+    freq_map(x_resolution, y_resolution, escape_limit, data);
+    //importance_map(x_resolution, y_resolution, escape_limit, data);
+
+
+    /* Generate image files using data written above
+     * gen_ppm    -    Generates PPM image (P6 Format)
+     * [ More file formats to be added ] */
     gen_ppm(name, com, x_resolution, y_resolution-1, data);
+
     free(data);
     return 0;
 }
