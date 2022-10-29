@@ -26,9 +26,9 @@ void gen_ppm(
     fprintf(image, "P6\n%s\n%d\n%d\n%d\n", com, x_resolution, y_resolution, 255);
     for (unsigned int y = 0; y < y_resolution; y++){
         for (unsigned int x = 0; x < x_resolution; x++){
-            color[0] = sqrt((double) data[x_resolution * y + x] / (double) max) * 255;
-            color[1] = sqrt((double) data[x_resolution * y + x] / (double) max) * 255;
-            color[2] = sqrt((double) data[x_resolution * y + x] / (double) max) * 255;
+            color[0] = ((double) data[x_resolution * y + x] / (double) max) * 255;
+            color[1] = ((double) data[x_resolution * y + x] / (double) max) * 255;
+            color[2] = ((double) data[x_resolution * y + x] / (double) max) * 255;
             fwrite(color, 1, 3, image);
         }
     }
