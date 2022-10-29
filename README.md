@@ -1,5 +1,5 @@
 # fract
-Generation program for various mandelbrot-derived fractals.
+Generation program for various forms of fractals derived from the Mandelbrot Set.
 ---
 Currently in very rough development. No execution tags added yet. If you want different outputs, use different functions inside `main()` and do it yourself.
 
