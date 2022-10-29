@@ -3,23 +3,27 @@
 #include "freq_map.h"
 #include "gen_ppm.h"
 #include "importance_map.h"
+#include "progress_bar.h"
 
 int main() {
+    /* Generate Progress Bar Lower Layer */
+    progress_bar_init();
+
     /* Define info needed for writing a PPM image. Will later be moved when
      * support for other formats is added. */
     char * name = "test.ppm";
     char * com = "# ";
 
-    unsigned int x_resolution = 1920;
-    unsigned int y_resolution = 1920;
-    //y_resolution += (y_resolution % 2 == 0);
-    unsigned int escape_limit = 512;
+    unsigned int x_resolution = 2560;
+    unsigned int y_resolution = 2560;
+    y_resolution += (y_resolution % 2 == 0);
+    unsigned int escape_limit = 8192;
 
 
     /* Define an output array. Needs to be dynamically allocated due to stack
      * memory size constraints. */
     unsigned int * data;
-    data = (unsigned int *) malloc(sizeof(unsigned int) * x_resolution * y_resolution);
+    data = (unsigned int *) calloc(x_resolution*y_resolution,sizeof(unsigned int));
 
 
     /* Calculate various forms of fractals. Outputs to inputted Data.

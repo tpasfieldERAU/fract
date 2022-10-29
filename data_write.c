@@ -12,9 +12,9 @@ void data_write(
         ){
     unsigned int x, y;
 
-    for (int j = 1; j < i; j++){
+    for (unsigned int j = 1; j < i; j++){
         x = mapBuff[2*j];
         y = mapBuff[2*j+1];
-        data[x_resolution * y + x] = data[x_resolution * y + x] + 1;
+        data[x_resolution*y+x] += 1;
     }
 }
