@@ -14,10 +14,10 @@ int main() {
     char * name = "test.ppm";
     char * com = "# ";
 
-    unsigned int x_resolution = 320;
-    unsigned int y_resolution = 222;
+    unsigned int x_resolution = 2560;
+    unsigned int y_resolution = 2560;
     y_resolution += (y_resolution % 2 == 0);
-    unsigned int escape_limit = 8192*32;
+    unsigned int escape_limit = 8192;
 
 
     /* Define an output array. Needs to be dynamically allocated due to stack

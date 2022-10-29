@@ -58,8 +58,8 @@ void freq_map(
                b2 = b * b;
 
                if(a2 + b2 > 4.0) break;
-               mapBuff[2*i]   = (unsigned int) rint((double) a / (double) scalar + (double) half_x);
-               mapBuff[2*i+1] = (unsigned int) rint((double) b / (double) scalar + (double) half_y);
+               mapBuff[2*i]   = (unsigned int) ((double) a / (double) scalar + (double) half_x);
+               mapBuff[2*i+1] = (unsigned int) ((double) b / (double) scalar + (double) half_y);
                i++;
             }
             if(i == escape_limit) continue;
