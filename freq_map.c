@@ -11,9 +11,10 @@ void freq_map(
         unsigned int * data
         ){
     const double half_x = x_resolution / 2.0, half_y = y_resolution / 2.0, scalar = 4.0 / y_resolution;
+
     unsigned int x, y;
-    int conv_test_var = 0;
-    double a_old = 0, b_old = 0;
+    unsigned int conv_test_var = 0;
+    double a_old = 0.0, b_old = 0.0;
 
     double x0, y0;
     double a, b;
@@ -56,14 +57,11 @@ void freq_map(
                a2 = a * a;
                b2 = b * b;
 
-               mapBuff[2*i]   = (int) rint(a / scalar + half_x);
-               mapBuff[2*i+1] = (int) rint(b / scalar + half_y);
-
                if(a2 + b2 > 4.0) break;
-
+               mapBuff[2*i]   = (unsigned int) rint((double) a / (double) scalar + (double) half_x);
+               mapBuff[2*i+1] = (unsigned int) rint((double) b / (double) scalar + (double) half_y);
                i++;
             }
-
             if(i == escape_limit) continue;
             data_write(mapBuff, data, i, x_resolution);
         }
