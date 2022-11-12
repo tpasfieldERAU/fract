@@ -15,7 +15,7 @@ int main() {
     char * com = "# ";
 
     unsigned int x_resolution = 2560;
-    unsigned int y_resolution = 2560;
+    unsigned int y_resolution = 1440;
     y_resolution += (y_resolution % 2 == 0);
     unsigned int escape_limit = 8192;
 
