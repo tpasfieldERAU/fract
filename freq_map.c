@@ -27,7 +27,7 @@ void freq_map(
         if (y % (int) (y_resolution / 64) == 0) progress_bar_update((double) y / (double) y_resolution);
         for (x = 0; x < x_resolution; x++) {
             x0 = (x - half_x) * scalar;
-            y0 = (y - half_x) * scalar;
+            y0 = (y - half_y) * scalar;
 
             a  = 0.0;
             b  = 0.0;
@@ -58,8 +58,8 @@ void freq_map(
                b2 = b * b;
 
                if(a2 + b2 > 4.0) break;
-               mapBuff[2*i]   = (unsigned int) ((double) a / (double) scalar + (double) half_x);
-               mapBuff[2*i+1] = (unsigned int) ((double) b / (double) scalar + (double) half_y);
+               mapBuff[2*i]   = (unsigned int) ( a / scalar + half_x);
+               mapBuff[2*i+1] = (unsigned int) ( b / scalar + half_y);
                i++;
             }
             if(i == escape_limit) continue;
