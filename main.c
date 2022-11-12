@@ -11,8 +11,8 @@ int main() {
 
     /* Define info needed for writing a PPM image. Will later be moved when
      * support for other formats is added. */
-    char * name = "test.ppm";
-    char * com = "# ";
+    char *name = "test.ppm";
+    char *com = "# ";
 
     unsigned int x_resolution = 2560;
     unsigned int y_resolution = 1440;
@@ -22,8 +22,8 @@ int main() {
 
     /* Define an output array. Needs to be dynamically allocated due to stack
      * memory size constraints. */
-    unsigned int * data;
-    data = (unsigned int *) calloc(x_resolution*y_resolution,sizeof(unsigned int));
+    unsigned int *data;
+    data = (unsigned int *) calloc(x_resolution * y_resolution, sizeof(unsigned int));
 
 
     /* Calculate various forms of fractals. Outputs to inputted Data.

@@ -24,7 +24,7 @@ void freq_map(
     mapBuff = malloc(sizeof *mapBuff * 2 * escape_limit);
 
     for (y = 0; y < y_resolution; y++) {
-        if (y % (int) (y_resolution / 64) == 0) progress_bar_update((double) y / (double) y_resolution);
+        //if (y % (int) (y_resolution / 64) == 0) progress_bar_update((double) y / (double) y_resolution);
         for (x = 0; x < x_resolution; x++) {
             x0 = (x - half_x) * scalar;
             y0 = (y - half_y) * scalar;
@@ -36,6 +36,14 @@ void freq_map(
             b2 = 0.0;
 
             if (a2 + b2 > 4.0) continue;
+            // BULB CONSTANT x^2-0.5x+0.0625+y^2
+            double bc = x0*x0 - 0.5*x0 + 0.0625 + y0*y0;
+            // Cardioid Check
+            if (bc * (bc + (x0 - 0.25)) <= 0.25 * (y0 * y0)) continue;
+
+            // Period 2 Bulb Check
+            if (x*x + 2*x + 1 + y*y <= 0.0625) continue;
+
             while(1) {
                if(i == escape_limit) break;
 
