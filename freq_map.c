@@ -24,7 +24,7 @@ void freq_map(
     mapBuff = malloc(sizeof *mapBuff * 2 * escape_limit);
 
     for (y = 0; y < y_resolution; y++) {
-        //if (y % (int) (y_resolution / 64) == 0) progress_bar_update((double) y / (double) y_resolution);
+        if (y % (int) (y_resolution / 64) == 0) progress_bar_update((double) y / (double) y_resolution);
         for (x = 0; x < x_resolution; x++) {
             x0 = (x - half_x) * scalar;
             y0 = (y - half_y) * scalar;
