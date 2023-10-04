@@ -6,3 +6,6 @@
 /*.ppm
 /*.pnm
 /test
+/testing
+/.vscode/
+/.vscode/*
