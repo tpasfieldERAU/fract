@@ -9,6 +9,10 @@
 
 #include <stdio.h>
 
+/* TODO             Change function names to use pbar.*/
+
+void pbar_terminate();
+
 void progress_bar_update(double input);
 
 void progress_bar_init();

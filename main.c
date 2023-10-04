@@ -53,6 +53,8 @@ int main() {
      * [ More file formats to be added ] */
     gen_ppm(name, com, x_resolution, y_resolution-1, data);
 
+    pbar_terminate();
+
     free(data);
     return 0;
 }

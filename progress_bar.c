@@ -4,6 +4,13 @@
 
 #include "progress_bar.h"
 
+void pbar_terminate() {
+    printf("\r");
+    printf("[----------------------------COMPLETE----------------------------]");
+    printf("\r\n");
+    fflush(stdout);
+}
+
 void progress_bar_update(double input) {
     printf("\r");
     printf("[");
