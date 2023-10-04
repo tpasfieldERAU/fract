@@ -1,3 +1,9 @@
+/**
+ * \file            main.c
+ * \brief           General example usage of generator. Does not provide
+ *                  any function of its own.
+*/
+
 #include <stdlib.h>
 
 #include "freq_map.h"
@@ -14,10 +20,10 @@ int main() {
     char *name = "test.ppm";
     char *com = "# ";
 
-    unsigned int x_resolution = 2560;
-    unsigned int y_resolution = 1440;
+    unsigned int x_resolution = 3072 * 1.5;
+    unsigned int y_resolution = 1920 * 1.5;
     y_resolution += (y_resolution % 2 == 0);
-    unsigned int escape_limit = 8192;
+    unsigned int escape_limit = 4096;
 
 
     /* Define an output array. Needs to be dynamically allocated due to stack
