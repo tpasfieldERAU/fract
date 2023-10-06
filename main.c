@@ -10,6 +10,7 @@
 #include "gen_ppm.h"
 #include "importance_map.h"
 #include "progress_bar.h"
+#include "gen_pgm.h"
 
 int main() {
     /* Generate Progress Bar Lower Layer */
@@ -17,13 +18,13 @@ int main() {
 
     /* Define info needed for writing a PPM image. Will later be moved when
      * support for other formats is added. */
-    char *name = "test.ppm";
+    char *name = "red.pgm";
     char *com = "# ";
 
     unsigned int x_resolution = 3072 * 1.5;
-    unsigned int y_resolution = 1920 * 1.5;
+    unsigned int y_resolution = 3072 * 1.5;
     y_resolution += (y_resolution % 2 == 0);
-    unsigned int escape_limit = 4096;
+    unsigned int escape_limit = 8192;
 
 
     /* Define an output array. Needs to be dynamically allocated due to stack
@@ -51,7 +52,7 @@ int main() {
     /* Generate image files using data written above
      * gen_ppm    -    Generates PPM image (P6 Format)
      * [ More file formats to be added ] */
-    gen_ppm(name, com, x_resolution, y_resolution-1, data);
+    gen_pgm_ascii(name, com, x_resolution, y_resolution-1, data);
 
     pbar_terminate();
 
